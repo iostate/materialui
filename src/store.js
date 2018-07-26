@@ -44,3 +44,31 @@ export const exercises = [
     muscles: 'legs',
   },
 ];
+
+export const injuries = [
+  {
+    id: 'muscle-pull',
+    title: 'Muscle Pull',
+    description: 'Pulling of a muscle',
+  },
+  {
+    id: 'sprained-ankle',
+    title: 'Sprained Ankle',
+    description: 'The spraining of an ankle.',
+  },
+  {
+    id: 'shoulder-injury',
+    title: 'Shoulder Injury',
+    description: 'The injuring of the shoulder.',
+  },
+  {
+    id: 'knee-injury',
+    title: 'Knee Injury',
+    description: 'The injuring of the knee.',
+  },
+  {
+    id: 'shin-splint',
+    title: 'Shin Splint',
+    description: 'The splinting of the shin.',
+  },
+];
