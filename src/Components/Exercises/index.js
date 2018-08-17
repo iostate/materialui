@@ -22,27 +22,36 @@ const styles = {
   },
 };
 
-export default ({exercises}) => (
+export default ({exercises, category, onSelect, exercise}) => (
   <Grid container>
+    {/* Left side Grid */}
     <Grid item sm>
       <Paper style={styles.Paper}>
-        {exercises.map(([group, exercises]) => (
-          <Fragment>
-            <Typography
-              variant="headline"
-              style={{textTransform: 'capitalize'}}
-            >
-              {group}
-            </Typography>
-            <List component="ul">
-              {exercises.map(({title}) => (
-                <ListItem button>
-                  <ListItemText primary={title} />
-                </ListItem>
-              ))}
-            </List>
-          </Fragment>
-        ))}
+        {/* For each major muscle group, create a list item with an exercise
+      for that muscle group. */}
+        {exercises.map(
+          ([group, exercises]) =>
+            !category || category === group ? (
+              <Fragment>
+                <Typography
+                  variant="headline"
+                  style={{textTransform: 'capitalize'}}
+                >
+                  {group}
+                </Typography>
+                <List component="ul">
+                  {exercises.map(({title, id}) => (
+                    <ListItem button>
+                      <ListItemText
+                        primary={title}
+                        onClick={() => onSelect(id)}
+                      />
+                    </ListItem>
+                  ))}
+                </List>
+              </Fragment>
+            ) : null
+        )}
       </Paper>
     </Grid>
 

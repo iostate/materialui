@@ -5,16 +5,15 @@ import {muscles, exercises, injuries} from '../store.js';
 import InjuryFooter from './Layouts/InjuryFooter';
 
 export default class extends Component {
-  state = {
-    exercises,
-    category: 'legs',
-  };
+
+  // category is changed via onSelect methods in Footer.js
+  state = {exercises, category: 'legs'};
 
   // Grab exercises based on the muscle group
   getExercisesByMuscles() {
     return Object.entries(
       this.state.exercises.reduce((exercises, exercise) => {
-        const {muscles} = exercise; // Grab muscle from single exercise object
+        const {muscles} = exercise; // Grab muscles that are worked out from this exercise
         // Check if muscle exists for that exercise. If so, return array with
         exercises[muscles] = exercises[muscles]
           ? [...exercises[muscles], exercise]
@@ -27,20 +26,32 @@ export default class extends Component {
 
   // Changes the state when a Tab in the Footer is changed.
   handleCategorySelected = category => {
-    this.setState({
-      category,
-    });
+    this.setState({category});
+  };
+
+  handleExerciseSelected = id => {
+    this.setState(({exercises}) => ({
+      exercise: exercises.find(ex => ex.id === id),
+    }));
   };
 
   render() {
     const exercises = this.getExercisesByMuscles(),
-      {category} = this.state;
+    {category, exercise} = this.state;
+    // above statement is the same as the below two statements
+    // const exercises = this.getExercisesByMuscles();
+    // const {category, exercise} = this.state;
 
     return (
       <Fragment>
         <Header />
 
-        <Exercises exercises={exercises} />
+        <Exercises
+          exercise={exercise}
+          category={category}
+          exercises={exercises}
+          onSelect={this.handleExerciseSelected}
+        />
 
         <Footer
           category={category}
