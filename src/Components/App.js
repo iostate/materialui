@@ -5,7 +5,6 @@ import {muscles, exercises, injuries} from '../store.js';
 import InjuryFooter from './Layouts/InjuryFooter';
 
 export default class extends Component {
-
   // category is changed via onSelect methods in Footer.js
   state = {exercises, category: 'legs'};
 
@@ -29,15 +28,22 @@ export default class extends Component {
     this.setState({category});
   };
 
+  /**
+   *
+   * Set the exercise in App.js state.
+   *
+   * Gets clicked in left hand column of Exercises/index
+   */
   handleExerciseSelected = id => {
     this.setState(({exercises}) => ({
+      // exercises comes from store.js
       exercise: exercises.find(ex => ex.id === id),
     }));
   };
 
   render() {
     const exercises = this.getExercisesByMuscles(),
-    {category, exercise} = this.state;
+      {category, exercise} = this.state;
     // above statement is the same as the below two statements
     // const exercises = this.getExercisesByMuscles();
     // const {category, exercise} = this.state;
