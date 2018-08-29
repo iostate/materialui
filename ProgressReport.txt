@@ -1,0 +1,18 @@
+what does the onSelect do Exercises/index.js:47
+
+change state in app
+
+What is it udating in state? 
+
+exercise property
+
+How is it rendering in the right side of the grid? 
+
+exercise needs to be pulled from the import in Exercises/index
+
+August 21st, 2018 
+https://www.youtube.com/watch?v=nF9q_fRV-1A
+Left off @ 11:16
+
+Implementing handleExerciseSelected handler in order to display the right side of 
+Exercises/index.js

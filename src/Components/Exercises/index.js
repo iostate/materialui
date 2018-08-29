@@ -40,6 +40,9 @@ export default ({exercises, category, onSelect, exercise}) => (
                   {group}
                 </Typography>
                 <List component="ul">
+                  {/* destructure the title for the text
+                    id for setting the state back in App.js
+                */}
                   {exercises.map(({title, id}) => (
                     <ListItem button>
                       <ListItemText

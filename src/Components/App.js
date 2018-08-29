@@ -35,10 +35,19 @@ export default class extends Component {
    * Gets clicked in left hand column of Exercises/index
    */
   handleExerciseSelected = id => {
+    // can also use prevState which is a setState property
+    // in order to access the state.. instead, we destructure the exercises
+    // array directly from the state, well, because we can.
+    // https://reactjs.org/docs/react-component.html
     this.setState(({exercises}) => ({
       // exercises comes from store.js
+      // exercise is the value of the first element
+      // that satisfies the search condition
+      // otherwise, undefined is returned
       exercise: exercises.find(ex => ex.id === id),
     }));
+    console.log('Exercise Click Handler: \n');
+    console.log(this.state.exercises.find(ex => ex.id === id));
   };
 
   render() {
@@ -64,7 +73,7 @@ export default class extends Component {
           muscles={muscles}
           onSelect={this.handleCategorySelected}
         />
-        <InjuryFooter injuries={injuries} />
+        {/* <InjuryFooter injuries={injuries} /> */}
       </Fragment>
     );
   }
